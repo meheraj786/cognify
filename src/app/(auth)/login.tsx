@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,30 +9,31 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { CheckSquare, Lock, Mail, ArrowRight } from 'lucide-react-native';
-import { router } from 'expo-router';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../lib/firebase';
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { CheckSquare, Lock, Mail, ArrowRight } from "lucide-react-native";
+import { router } from "expo-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../lib/firebase";
+import { GoogleSignInButton } from "../../components/GoogleSignInButton";
 
 export default function LoginScreen() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
     if (!email.trim() || !password.trim()) {
-      Alert.alert('Validation Error', 'Please enter email and password');
+      Alert.alert("Validation Error", "Please enter email and password");
       return;
     }
 
     try {
       setLoading(true);
       await signInWithEmailAndPassword(auth, email.trim(), password);
-      router.replace('/(tabs)');
+      router.replace("/(tabs)");
     } catch (error: any) {
-      Alert.alert('Login Failed', error.message || 'Invalid credentials');
+      Alert.alert("Login Failed", error.message || "Invalid credentials");
     } finally {
       setLoading(false);
     }
@@ -41,11 +42,11 @@ export default function LoginScreen() {
   return (
     <SafeAreaView className="flex-1 bg-[#0B0F17]">
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         className="flex-1"
       >
         <ScrollView
-          contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
           className="px-6"
           showsVerticalScrollIndicator={false}
         >
@@ -53,8 +54,12 @@ export default function LoginScreen() {
             <View className="w-14 h-14 rounded-2xl bg-indigo-600 items-center justify-center shadow-lg shadow-indigo-500/40 mb-4">
               <CheckSquare size={32} color="#FFFFFF" />
             </View>
-            <Text className="text-white text-3xl font-extrabold tracking-tight">Cognify</Text>
-            <Text className="text-gray-400 text-sm mt-1">Focus, tasks, and knowledge vault</Text>
+            <Text className="text-white text-3xl font-extrabold tracking-tight">
+              Cognify
+            </Text>
+            <Text className="text-gray-400 text-sm mt-1">
+              Focus, tasks, and knowledge vault
+            </Text>
           </View>
 
           <View className="bg-[#141A24] border border-[#202838] rounded-3xl p-6 mb-6">
@@ -104,17 +109,26 @@ export default function LoginScreen() {
                 <ActivityIndicator size="small" color="#FFFFFF" />
               ) : (
                 <>
-                  <Text className="text-white font-bold text-sm">Continue to Workspace</Text>
+                  <Text className="text-white font-bold text-sm">
+                    Continue to Workspace
+                  </Text>
                   <ArrowRight size={16} color="#FFFFFF" />
                 </>
               )}
             </TouchableOpacity>
+            <GoogleSignInButton />
           </View>
 
           <View className="flex-row items-center justify-center gap-1.5">
-            <Text className="text-gray-400 text-xs">Don't have an account?</Text>
-            <TouchableOpacity onPress={() => router.push('/(auth)/register' as any)}>
-              <Text className="text-indigo-400 text-xs font-bold">Create an account</Text>
+            <Text className="text-gray-400 text-xs">
+              Don&apos;t have an account?
+            </Text>
+            <TouchableOpacity
+              onPress={() => router.push("/(auth)/register" as any)}
+            >
+              <Text className="text-indigo-400 text-xs font-bold">
+                Create an account
+              </Text>
             </TouchableOpacity>
           </View>
         </ScrollView>

@@ -130,7 +130,7 @@ export default function CalendarScreen() {
             <Search size={18} color="#94A3B8" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => router.push("/(auth)/profile" as any)}
+            onPress={() => router.push("/profile")}
             className="w-9 h-9 rounded-full bg-indigo-950 border border-indigo-500/40 overflow-hidden items-center justify-center"
           >
             {user?.photoURL ? (

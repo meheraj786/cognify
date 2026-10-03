@@ -53,4 +53,16 @@ To learn more about developing your project with Expo, look at the following res
 Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Discord community](https://chat.expo.dev): Chat with the Expo community.
+
+## Google sign-in setup
+
+Enable Google as a sign-in provider in Firebase Authentication, then create OAuth client IDs in Google Cloud for each platform you use. Add the client IDs to `.env`:
+
+```env
+EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID=your-web-client-id
+EXPO_PUBLIC_GOOGLE_IOS_CLIENT_ID=your-ios-client-id
+EXPO_PUBLIC_GOOGLE_ANDROID_CLIENT_ID=your-android-client-id
+```
+
+Add the web app's local and production domains to Firebase's authorized domains. For Android, configure the OAuth client with the app package name and signing certificate fingerprint. Restart Expo after changing `.env`.

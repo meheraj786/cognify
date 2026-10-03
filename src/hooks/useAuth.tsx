@@ -1,6 +1,12 @@
-import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
-import { User, onAuthStateChanged, signOut as fbSignOut } from 'firebase/auth';
-import { auth } from '../../lib/firebase';
+import {
+  useState,
+  useEffect,
+  createContext,
+  useContext,
+  ReactNode,
+} from "react";
+import { User, onAuthStateChanged, signOut as fbSignOut } from "firebase/auth";
+import { auth } from "../../lib/firebase";
 
 interface AuthContextType {
   user: User | null;

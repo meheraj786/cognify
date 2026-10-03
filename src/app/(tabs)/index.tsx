@@ -97,7 +97,7 @@ export default function HomeScreen() {
             <Search size={18} color="#94A3B8" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => router.push("/(auth)/profile" as any)}
+            onPress={() => router.push("/profile")}
             className="w-9 h-9 rounded-full bg-indigo-950 border border-indigo-500/40 overflow-hidden items-center justify-center"
           >
             {user?.photoURL ? (
@@ -146,7 +146,7 @@ export default function HomeScreen() {
             <View className="flex-1">
               <View className="self-start bg-[#1F2737] px-2.5 py-0.5 rounded-full mb-2">
                 <Text className="text-gray-300 text-[11px] font-bold uppercase tracking-wider">
-                  Today's Rhythm
+                  Today&apos;s Rhythm
                 </Text>
               </View>
               <Text className="text-white text-2xl font-extrabold">

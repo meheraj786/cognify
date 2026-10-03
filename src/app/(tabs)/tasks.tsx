@@ -114,7 +114,7 @@ export default function TasksScreen() {
             <Search size={18} color="#94A3B8" />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => router.push("/(auth)/profile" as any)}
+            onPress={() => router.push("/profile")}
             className="w-9 h-9 rounded-full bg-indigo-950 border border-indigo-500/40 overflow-hidden items-center justify-center"
           >
             {user?.photoURL ? (
@@ -283,7 +283,7 @@ export default function TasksScreen() {
               Velocity Streak: 6 Days
             </Text>
             <Text className="text-gray-400 text-xs mt-0.5">
-              You're completing 82% of assigned subtasks on time.
+              You&apos;re completing 82% of assigned subtasks on time.
             </Text>
           </View>
         </View>
